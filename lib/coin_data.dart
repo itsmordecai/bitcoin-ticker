@@ -1,4 +1,6 @@
 //TODO: Add your imports here.
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 const List<String> currenciesList = [
   'AUD',
@@ -31,8 +33,26 @@ const List<String> cryptoList = [
 ];
 
 const coinAPIURL = 'https://rest.coinapi.io/v1/exchangerate';
-const apiKey = 'YOUR-API-KEY-HERE';
+const apiKey = 'D9C23202-2915-4672-8F5F-790A4B186EAC';
+
+//https://rest.coinapi.io/v1/exchangerate/BTC/USD?apikey=
 
 class CoinData {
   //TODO: Create your getCoinData() method here.
+
+  Future getCoinData() async {
+    final String requestURL = '$coinAPIURL/BTC/USD?apikey=$apiKey';
+
+    http.Response response = await http.get(requestURL);
+
+    if (response.statusCode == 200) {
+      String data = response.body;
+      var decodedData = jsonDecode(data);
+      var price = decodedData['rate'];
+
+      return price;
+    } else {
+      print(response.statusCode);
+    }
+  }
 }
