@@ -36,9 +36,6 @@ const apiKey = 'D9C23202-2915-4672-8F5F-790A4B186EAC';
 
 class CoinData {
   Future getCoinData(String selectedCurrency) async {
-    //TODO 4: Use a for loop here to loop through the cryptoList and request the data for each of them in turn.
-    //TODO 5: Return a Map of the results instead of a single value
-
     Map<String, String> cryptoPrices = {};
 
     for (String crypto in cryptoList) {
