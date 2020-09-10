@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'dart:core';
 
 const List<String> currenciesList = [
   'AUD',
@@ -42,9 +41,9 @@ class CoinData {
 
     Map<String, String> cryptoPrices = {};
 
-    for (String cryptoCurrency in cryptoList) {
+    for (String crypto in cryptoList) {
       String requestURL =
-          '$coinAPIURL/$cryptoCurrency/$selectedCurrency?apikey=$apiKey';
+          '$coinAPIURL/$crypto/$selectedCurrency?apikey=$apiKey';
       http.Response response = await http.get(requestURL);
 
       if (response.statusCode == 200) {
@@ -52,7 +51,7 @@ class CoinData {
         double lastPrice = decodedData['rate'];
         String rate = lastPrice.toStringAsFixed(0);
 
-        cryptoPrices['$cryptoCurrency'] = rate;
+        cryptoPrices['$crypto'] = rate;
       } else {
         print(response.statusCode);
         throw 'Problem with the get request';

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'coin_data.dart';
 import 'dart:io' show Platform;
-import 'dart:core';
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -53,7 +52,6 @@ class _PriceScreenState extends State<PriceScreen> {
     );
   }
 
-  String value = '?';
   Map<String, String> cryptoValue = {};
 
   //TODO 7: Figure out a way of displaying a '?' on screen while we're waiting for the price data to come back. Hint: You'll need a ternary operator.
